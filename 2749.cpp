@@ -5,7 +5,7 @@ int main(void) {
 
     unsigned long long n;
     scanf("%lld",&n);
-    unsigned int fArray[3];
+    unsigned int pibo[3];
 
     pibo[0] = 0;
     pibo[1] = 1;
