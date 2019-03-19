@@ -1,19 +1,22 @@
 #include <stdio.h>
 #include <iostream>
 using namespace std;
-int n, k;
+
+int f(int num){
+  if(num == 0) return 1;
+  int result = 1;
+  for(int i = num; i >=1; i--){
+    result *= i;
+  }
+
+  return result;
+}
 
 int main(void){
+  int n, k;
   cin >> n >> k;
-  int a = 1, b = 1;
 
-    for(int j = 0; j < k; j++){
-      a *= (n - j);
-      b *= (j);
-    }
-    cout << a/b;
-
-
+  cout << f(n)/(f(k) * f(n-k));
 
 
   return 0;
