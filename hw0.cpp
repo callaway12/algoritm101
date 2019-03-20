@@ -50,24 +50,54 @@ Tree tree[nodeNum];
 //
 //
 // }
-int get_leaf(int pos) {
-  if (tree[pos].left == -1 && tree[pos].right == -1){
-    return 1;
-  }
-  else if(tree[pos].left == -1 && tree[pos].right != -1){
-    int t_right = tree[pos].right;
-    return get_leaf(t_right);
-  }else if(tree[pos].right == -1 && tree[pos].left != -1) {
-    int t_left = tree[pos].left;
-    return get_leaf(t_left);
-  }else if(tree[pos].left != -1 && tree[pos].right != -1){
-    int t_left = tree[pos].left;
-    int t_right = tree[pos].right;
-    return get_leaf(t_left) + get_leaf(t_right);
-  }
+// int get_leaf(int pos) {
+//   if (tree[pos].left == -1 && tree[pos].right == -1){
+//     return 1;
+//   }
+//   else if(tree[pos].left == -1 && tree[pos].right != -1){
+//     int t_right = tree[pos].right;
+//     return get_leaf(t_right);
+//   }else if(tree[pos].right == -1 && tree[pos].left != -1) {
+//     int t_left = tree[pos].left;
+//     return get_leaf(t_left);
+//   }else if(tree[pos].left != -1 && tree[pos].right != -1){
+//     int t_left = tree[pos].left;
+//     int t_right = tree[pos].right;
+//     return get_leaf(t_left) + get_leaf(t_right);
+//   }
+// }
+// int plus(int pos){
+//   if(tree[pos].left != -1 && tree[pos].right != -1){
+//     int t_l = tree[pos].left;
+//     int t_r = tree[pos].right;
+//     tree[pos].cnt = plus(t_l) + plus(t_r) + tree[pos].cnt;
+//   }else if(tree[pos].left != -1){
+//     int t_l = tree[pos].left;
+//     tree[pos].cnt += plus(t_l);
+//   }else if(tree[pos].right != -1){
+//       int t_r = tree[pos].right;
+//       tree[pos].cnt += plus(t_r);
+//       return
+//   }else{
+//     return 1;
+//   }
+// }
+int asdf(int pos){
+  if(tree[pos].left != -1 && tree[pos].right != -1){
+    int t_l = tree[pos].left;
+    int t_r = tree[pos].right;
+    tree[pos].cnt = asdf(t_l) + asdf(t_r) + tree[pos].cnt;
+   return tree[pos].cnt;
+  }else if(tree[pos].left != -1){
+    int t_l = tree[pos].left;
+    tree[pos].cnt += asdf(t_l);
+   return tree[pos].cnt;
+  }else if(tree[pos].right != -1){
+      int t_r = tree[pos].right;
+      tree[pos].cnt += asdf(t_r);
+     return tree[pos].cnt;
+  }else return 1;
 }
-
-
 
 int main(void){
   int count[100]= {0};
@@ -88,24 +118,33 @@ int main(void){
       cin >> n;
       for(int k = 0; k < n; k++){
         scanf("%d %d %d", &data, &left, &right);
+        tree[left].parent = data;
+        tree[right].parent = data;
+
         tree[k].left = left;
         tree[k].right = right;
         tree[k].data = data;
 
       }//다 잡아넣음.
 
-      for(int y = 0; y < n; y++){
-        int t_l = tree[y].left;
-        int t_r = tree[y].right;
-        if(get_leaf(t_l) < get_leaf(t_r)){
-          count[t]++;
+      for(int y = n; y > 0; y--){
+
+        if(tree[y].left && tree[y].right){
+          int t_l = tree[y].left;
+          int t_r = tree[y].right;
+          if(asdf(t_l) && asdf(t_r)){
+            if(asdf(t_l) < asdf(t_r))
+              count[i]++;
+          }
+        }else if(tree[y].right){
+          count[i]++;
         }
       }
     }
 
     for(int i = 0; i < t; i++){
 
-      cout << count[t] << endl;
+      cout << count[i] << endl;
 
 
     }
