@@ -7,7 +7,7 @@ class Node(object):
         self.data = data
         self.data = self.right = None
 
-class bst(object):
+class Bst(object):
     def __init__(self):
         self.root = None
     def insert(self, data):
@@ -36,9 +36,10 @@ class bst(object):
 
 arr = [1, 11, 15, 19, 37, 48, 59, 61]
 print('heelo')
-a = input('plz : ')
+a = int(input('plz : '))
+bst = Bst()
 
 for x in arr:
     bst.insert(x)
 
-    print(bst.find(a))
+print(bst.find(a))
