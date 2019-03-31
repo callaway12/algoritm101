@@ -46,7 +46,6 @@ class Node:
     
     def postorder(self):
         if self:
-            
             if self.left:
                 self.left.postorder()
             if self.right:
