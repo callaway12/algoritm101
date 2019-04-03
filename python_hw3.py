@@ -18,3 +18,5 @@ def merge_sort(arr):
     merged_arr += low_arr[l:]
     merged_arr += high_arr[h:]
     return merged_arr
+
+    print(str(merged_arr))
