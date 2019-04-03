@@ -6,17 +6,19 @@ def merge_sort(arr):
     low_arr = merge_sort(arr[:mid])
     high_arr = merge_sort(arr[mid:])
 
-    merged_arr = []
+    real = []
     l = h = 0
     while l < len(low_arr) and h < len(high_arr):
         if low_arr[l] < high_arr[h]:
-            merged_arr.append(low_arr[l])
+            real.append(low_arr[l])
             l += 1
         else:
-            merged_arr.append(high_arr[h])
+            real.append(high_arr[h])
             h += 1
-    merged_arr += low_arr[l:]
-    merged_arr += high_arr[h:]
-    return merged_arr
+    real += low_arr[l:]
+    real += high_arr[h:]
+    return real
 
-    print(str(merged_arr))
+in_arr = [100, 23, 31, 123, 435, 642, 1]
+
+    print(str(merge_sort(in_arr))

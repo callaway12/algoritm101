@@ -1,50 +1,50 @@
 class Node:
-    def __init__(self, val):
-        self.val = val
+    def __init__(self, data):
+        self.data = data
         self.cnt = None
-        self.leftChild = None
-        self.rightChild = None
+        self.left = None
+        self.right = None
 
 
 class BST:
     def __init__(self):
         self.root = None
 
-    def setRoot(self, val):
-        self.root = Node(val)
+    def setRoot(self, data):
+        self.root = Node(data)
 
-    def insert(self, val):
+    def insert(self, data):
         if (self.root is None):
-            self.setRoot(val)
+            self.setRoot(data)
         else:
-            self.insertNode(self.root, val)
+            self.insertNode(self.root, data)
 
-    def insertNode(self, currentNode, val):
-        if (val <= currentNode.val):
-            if (currentNode.leftChild):
-                self.insertNode(currentNode.leftChild, val)
+    def insertNode(self, pos, data):
+        if (data <= pos.data):
+            if (pos.left):
+                self.insertNode(pos.left, data)
             else:
-                currentNode.leftChild = Node(val)
-        elif (val > currentNode.val):
-            if (currentNode.rightChild):
-                self.insertNode(currentNode.rightChild, val)
+                pos.left = Node(data)
+        elif (data > pos.data):
+            if (pos.right):
+                self.insertNode(pos.right, data)
             else:
-                currentNode.rightChild = Node(val)
+                pos.right = Node(data)
 
-    def find(self, val):
-        return self.findNode(self.root, val)
+    def find(self, data):
+        return self.findNode(self.root, data)
 
-    def findNode(self, currentNode, val):
-        if (currentNode is None):
+    def findNode(self, pos, data):
+        if (pos is None):
             print("None")
             return False
-        elif (val == currentNode.val):
-            # print("Order :" + str(currentNode.val))
+        elif (data == pos.data):
+            # print("Order :" + str(pos.data))
             return True
-        elif (val < currentNode.val):
-            return self.findNode(currentNode.leftChild, val)
+        elif (data < pos.data):
+            return self.findNode(pos.left, data)
         else:
-            return self.findNode(currentNode.rightChild, val)
+            return self.findNode(pos.right, data)
 
 bst = BST()
 
