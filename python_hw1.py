@@ -6,7 +6,7 @@ class Node:
         self.right = None
 
 
-class BST:
+class Bst:
     def __init__(self):
         self.root = None
 
@@ -39,14 +39,13 @@ class BST:
             print("None")
             return False
         elif (data == pos.data):
-            # print("Order :" + str(pos.data))
             return True
         elif (data < pos.data):
             return self.findNode(pos.left, data)
         else:
             return self.findNode(pos.right, data)
 
-bst = BST()
+bst = Bst()
 
 arr = [1, 11, 15, 19, 37, 48, 59, 61]
 
