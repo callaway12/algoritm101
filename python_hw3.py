@@ -15,10 +15,12 @@ def merge_sort(arr):
         else:
             real.append(high_arr[h])
             h += 1
-    real += low_arr[l:]
-    real += high_arr[h:]
-    return real
+        real += low_arr[l:]
+        real += high_arr[h:]
+        return real
+    
 
 in_arr = [100, 23, 31, 123, 435, 642, 1]
 
-    print(str(merge_sort(in_arr))
+
+print(str(merge_sort(in_arr)))

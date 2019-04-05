@@ -12,17 +12,7 @@ class Bst:
     def setRoot(self, data):
         self.root = Node(data)
 
-    def insert(self, data):
-        if(self.root is None):
-            self.setRoot(data)
-        else:
-            self.insertNode(self.root, data)
 
-    def insertNode(self, pos, data):
-        if(pos.left):
-            self.insertNode(pos.left, data)
-        elif(pos.right):
-            self.insertNode(pos.right, data)
     def inorder(self, pos):
         if (pos is not None):
             if (pos.left):
