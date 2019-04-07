@@ -4,12 +4,13 @@
 #include <fstream>
 #include <vector>
 using namespace std;
-char ex[] = "Exchange Sort";  // 13
-char qu[] = "Quick Sort";     // 10
-char me[] = "Merge Sort";     // 10
-char kc[] = "Key Compares";   // 12
-char et[] = "Exe.Time";       // 8
-char sp[] = "             ";  // 13
+char ex[] = "Exchange Sort";
+char qu[] = "Quick Sort";
+char me[] = "Merge Sort";
+char kc[] = "Key Compares";
+char et[] = "Exe.Time";
+char sp[] = "             ";
+
 
 unsigned long long key_compare; // 비교횟수 count
 unsigned long long result[2][3];  // 1번 key_compare 저장
@@ -101,10 +102,10 @@ int main() {
 			t = clock() - t;
 			kc_qs = key_compare;
 			et_qs = (double)(t) / CLOCKS_PER_SEC;  // 경과 시간 저장
-			
-			
+
+
 		}
-		
+
 		kc_ms /= 5;
 		kc_qs /= 5;
 		et_ms /= 5.0;

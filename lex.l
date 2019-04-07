@@ -1,23 +1,22 @@
-%{
-#include<stdio.h>
-int words=0;
-%}
-%%
-
-\n { words++;}
-[\t 'love'] words++;
-
-%%
-main(void)
-{
-yyin= fopen("ex.txt","r");
-yylex();
-
-printf("\n\t%d words",words);
-
-}
- 
-int yywrap()
-{
-return(1);
+%{ 
+#include<stdio.h> 
+#include<string.h> 
+int i = 0; 
+%} 
+  
+/* Rules Section*/
+%% 
+Love    {i++;} 
+  
+"\n" {printf("%d\n", i); i = 0;} 
+%% 
+  
+int yywrap(void){} 
+  
+int main() 
+{    
+    // The function that starts the analysis 
+    yylex(); 
+  
+    return 0; 
 }
