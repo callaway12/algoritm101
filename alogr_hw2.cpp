@@ -10,9 +10,11 @@
 using namespace std;
 using namespace std::chrono;
 
-const int dndnd = 3000000;
 
-int nMax1, nMax2, nMax3 = 0;
+int nMax1, nMax2, nMax3;
+int tmp_input1, tmp_input2,tmp_input3;
+
+int crr1_1[3000000], crr1_2[3000000], crr2_1[3000000], crr2_2[3000000], crr3_1[3000000], crr3_2[3000000];
 
 int arr1_1[3000000], arr1_2[3000000], arr1_3[3000000];
 int arr2_1[3000000], arr2_2[3000000], arr2_3[3000000];
@@ -24,7 +26,6 @@ int brr3_1[3000000], brr3_2[3000000], brr3_3[3000000];
 float tmp_time[3][3] = {0};
 
 void ex_sort(int * arr, int n){
-    // int n = sizeof(arr) - 1; //-1 안하면 null값까지 들어가서 안됨
 
     for(int i = 0; i < n; i ++ ){
         for(int j = 0; j < n; j++){
@@ -122,6 +123,7 @@ void ran_num_input(int a, int b, int c){
     arr3_2[i] = rand() + 1;
     arr3_3[i] = rand() + 1;
   }
+  /////// for compare same data
   for(int i = 0; i < a; i++){
     brr1_1[i] = arr1_1[i];
     brr1_2[i] = arr1_2[i];
@@ -145,9 +147,21 @@ void ran_num_input(int a, int b, int c){
 
 int main(void){
 
-    cin >> nMax1 >> nMax2 >> nMax3;
+
+
+
+
+
+
+
+
+
+    // cin >> nMax1 >> nMax2 >> nMax3;
 
 float out_time [3][6] ={0};
+// nMax1 = 10000;
+// nMax2 = 20000;
+// nMax3 = 30000;
 
     ran_num_input(nMax1, nMax2, nMax3);
 
@@ -202,17 +216,17 @@ float out_time [3][6] ={0};
     /////20000
 
     high_resolution_clock::time_point t112 = high_resolution_clock::now();
-    merge_sort(arr3_1, 0, nMax1);
+    merge_sort(arr3_1, 0, nMax3);
     high_resolution_clock::time_point t212 = high_resolution_clock::now();
 
 
     high_resolution_clock::time_point t122 = high_resolution_clock::now();
-    merge_sort(arr3_2, 0, nMax1);
+    merge_sort(arr3_2, 0, nMax3);
     high_resolution_clock::time_point t222 = high_resolution_clock::now();
 
 
     high_resolution_clock::time_point t132 = high_resolution_clock::now();
-    merge_sort(arr3_3, 0, nMax1);
+    merge_sort(arr3_3, 0, nMax3);
     high_resolution_clock::time_point t232 = high_resolution_clock::now();
 
 
@@ -250,7 +264,7 @@ out_time[0][3] = tmp_time[0][0];
 out_time[0][4] = tmp_time[0][1];
 out_time[0][5] = tmp_time[0][2];
 
-/////위에가 10000
+///// 10000
 
 high_resolution_clock::time_point t114 = high_resolution_clock::now();
 sort(brr2_1, brr2_1 + nMax2);
@@ -319,27 +333,108 @@ out_time[2][5] = tmp_time[0][2];
     //
 
 
+
+  for(int i = 0; i < tmp_input1; i++){
+    crr1_1[i] = i;
+    crr1_2[i] = i;
+  }
+  for(int i = 0; i < tmp_input2; i++){
+    crr2_1[i] = i;
+    crr2_2[i] = i;
+  }
+  for(int i = 0; i < tmp_input3; i++){
+    crr3_1[i] = i;
+    crr3_2[i] = i;
+  }
+
+/////////////////////////
+
+  float tmp_exq_time[2][3] = {0};
+
+  high_resolution_clock::time_point t1152 = high_resolution_clock::now();
+  sort(crr1_2, crr1_2 + tmp_input1);
+  high_resolution_clock::time_point t2152 = high_resolution_clock::now();
+  high_resolution_clock::time_point t1252 = high_resolution_clock::now();
+  sort(crr2_2, crr2_2 + tmp_input2);
+  high_resolution_clock::time_point t2252 = high_resolution_clock::now();
+  high_resolution_clock::time_point t1352 = high_resolution_clock::now();
+  sort(crr3_2, crr3_2 + tmp_input3);
+  high_resolution_clock::time_point t2352 = high_resolution_clock::now();
+
+
+  tmp_exq_time[1][0] = duration_cast<microseconds>(t2152 - t1152).count();
+  tmp_exq_time[1][1] = duration_cast<microseconds>(t2252 - t1252).count();
+  tmp_exq_time[1][2] = duration_cast<microseconds>(t2352 - t1352).count();
+
+  high_resolution_clock::time_point t1114 = high_resolution_clock::now();
+  ex_sort(crr1_1, tmp_input1);
+  high_resolution_clock::time_point t2114 = high_resolution_clock::now();
+
+
+  high_resolution_clock::time_point t1214 = high_resolution_clock::now();
+  ex_sort(crr2_1, tmp_input2);
+  high_resolution_clock::time_point t2214 = high_resolution_clock::now();
+
+
+  high_resolution_clock::time_point t1314 = high_resolution_clock::now();
+  ex_sort(crr3_1, tmp_input3);
+  high_resolution_clock::time_point t2314 = high_resolution_clock::now();
+
+
+  tmp_exq_time[0][0] = duration_cast<microseconds>(t2114 - t1114).count();
+  tmp_exq_time[0][1] = duration_cast<microseconds>(t2214 - t1214).count();
+  tmp_exq_time[0][2] = duration_cast<microseconds>(t2314 - t1314).count();
+
+
+//////////////////////////////
+
+
+
 float aver[2][3] = {0};
 
-aver[0][0] = out_time[0][0] + out_time[1][0] + out_time[2][0];
-aver[0][1] = out_time[0][1] + out_time[1][1] + out_time[2][1];
-aver[0][2] = out_time[0][2] + out_time[1][2] + out_time[2][2];
-aver[1][0] = out_time[0][3] + out_time[1][3] + out_time[2][3];
-aver[1][1] = out_time[0][4] + out_time[1][4] + out_time[2][4];
-aver[1][2] = out_time[0][3] + out_time[1][5] + out_time[2][5];
+aver[0][0] = out_time[0][0] + out_time[0][1] + out_time[0][2];
+aver[0][1] = out_time[1][0] + out_time[1][1] + out_time[1][2];
+aver[0][2] = out_time[2][0] + out_time[2][1] + out_time[2][2];
+aver[1][0] = out_time[0][3] + out_time[0][4] + out_time[0][5];
+aver[1][1] = out_time[1][4] + out_time[1][4] + out_time[1][5];
+aver[1][2] = out_time[2][3] + out_time[2][4] + out_time[2][5];
+
+for(int i = 0; i < 2; i++){
+  for(int j = 0; j < 3; j++){
+    aver[i][j] = aver[i][j]/3;
+  }
+}
+
+///////////////////
 
 
+
+
+
+
+
+
+
+
+
+////////////////////
+    printf("N = %d      N = %d     N = %d\n", tmp_input1, tmp_input2, tmp_input3 );
+    printf("Exchange Sort     %.0f     %.0f     %.0f\n", tmp_exq_time[0][0], tmp_exq_time[0][1],tmp_exq_time[0][2]);
+    printf("Quick Sort        %.0f     %.0f     %.0f\n", tmp_exq_time[1][0], tmp_exq_time[1][1],tmp_exq_time[1][2]);
+
+    printf("\n\n\n" );
+    printf("N = %d      N = %d     N = %d\n", nMax1, nMax2, nMax3 );
     printf("Merge Sort\n" );
-    printf("data 1     %f     %f     %f\n", out_time[0][0], out_time[0][1], out_time[0][2]);
-    printf("data 2     %f     %f     %f\n", out_time[1][0], out_time[1][1], out_time[1][2]);
-    printf("data 3     %f     %f     %f\n", out_time[2][0], out_time[2][1], out_time[2][2]);
-    printf("average    %f     %f     %f\n",  aver[0][0]/3, aver[0][1]/3, aver[0][2]/3);
+    printf("data 1     %.0f     %.0f     %.0f\n", out_time[0][0], out_time[1][0], out_time[2][0]);
+    printf("data 2     %.0f     %.0f     %.0f\n", out_time[0][1], out_time[1][1], out_time[2][1]);
+    printf("data 3     %.0f     %.0f     %.0f\n", out_time[0][2], out_time[1][2], out_time[2][2]);
+    printf("average    %.0f     %.0f     %.0f\n",  aver[0][0], aver[0][1], aver[0][2]);
 
     printf("Quick Sort \n");
-    printf("data 1     %f     %f     %f\n", out_time[0][3], out_time[1][3], out_time[0][5]);
-    printf("data 2     %f     %f     %f\n", out_time[1][3], out_time[1][4], out_time[1][5]);
-    printf("data 3     %f     %f     %f\n", out_time[2][3], out_time[2][4], out_time[2][5]);
-    printf("average    %f     %f     %f\n",  aver[1][0]/3, aver[1][1]/3, aver[1][2]/3);
+    printf("data 1     %.0f     %.0f     %.0f\n", out_time[0][3], out_time[1][3], out_time[2][3]);
+    printf("data 2     %.0f     %.0f     %.0f\n", out_time[0][4], out_time[1][4], out_time[2][4]);
+    printf("data 3     %.0f     %.0f     %.0f\n", out_time[0][5], out_time[1][5], out_time[2][5]);
+    printf("average    %.0f     %.0f     %.0f\n",  aver[1][0], aver[1][1], aver[1][2]);
 
 
 
