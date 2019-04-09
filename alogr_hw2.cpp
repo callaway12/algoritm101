@@ -7,6 +7,7 @@
 #include <stdlib.h>       //srand
 #include <time.h>     //time
 #include <chrono>
+#include <fstream>
 using namespace std;
 using namespace std::chrono;
 
@@ -101,6 +102,37 @@ void merge_sort(int * arr, int l, int r)
 
 
 }
+void quick_sort(int * arr, int s, int e){
+    if(s >= e){
+        return;
+    }
+    int pivot = s;
+    int i = pivot + 1;
+    int j = e;
+    int tmp;
+
+    while(i <= j){
+        while(i <= e && arr[i] <= arr[pivot]){
+            i++;
+        }
+        while(j > s && arr[j] >= arr[pivot]){
+            j--;
+        }
+
+        if(i > j){
+            tmp = arr[j];
+            arr[j] = arr[pivot];
+            arr[pivot] = tmp;
+        }else{
+            tmp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+        }
+    }
+
+    quick_sort(arr, s, j - 1);
+    quick_sort(arr, j + 1, e);
+}
 
 
 void ran_num_input(int a, int b, int c){
@@ -111,13 +143,11 @@ void ran_num_input(int a, int b, int c){
     arr1_2[i] = rand() + 1;
     arr1_3[i] = rand() + 1;
   }
-  srand((unsigned int)time(NULL));
   for(int i = 0; i < b; i++){
     arr2_1[i] = rand() + 1;
     arr2_2[i] = rand() + 1;
     arr2_3[i] = rand() + 1;
   }
-  srand((unsigned int)time(NULL));
   for(int i = 0; i < c; i++){
     arr3_1[i] = rand() + 1;
     arr3_2[i] = rand() + 1;
@@ -148,6 +178,13 @@ void ran_num_input(int a, int b, int c){
 int main(void){
 
 
+  ifstream in_file ("input.txt");
+  if(! in_file.is_open()){
+    cout << "error";
+    exit(1);
+  }while(!in_file.eof()){
+    in_file >> tmp_input1 >> tmp_input2 >> tmp_input3 >> nMax1 >> nMax2 >> nMax3;
+  }
 
 
 
@@ -156,7 +193,8 @@ int main(void){
 
 
 
-    // cin >> nMax1 >> nMax2 >> nMax3;
+
+    // cin >> tmp_input1 >> tmp_input2 >> tmp_input3 >> nMax1 >> nMax2 >> nMax3;
 
 float out_time [3][6] ={0};
 // nMax1 = 10000;
@@ -242,17 +280,17 @@ float out_time [3][6] ={0};
 //30000 merge done
 ///////////////////////// ^ nMax1,///////// V nMax2///////
 high_resolution_clock::time_point t113 = high_resolution_clock::now();
-sort(brr1_1, brr1_1 + nMax1);
+quick_sort(brr1_1, 0, nMax1);
 high_resolution_clock::time_point t213 = high_resolution_clock::now();
 
 
 high_resolution_clock::time_point t123 = high_resolution_clock::now();
-sort(brr1_2, brr1_2 + nMax1);
+quick_sort(brr1_2, 0, nMax1);
 high_resolution_clock::time_point t223 = high_resolution_clock::now();
 
 
 high_resolution_clock::time_point t133 = high_resolution_clock::now();
-sort(brr1_3, brr1_3 + nMax1);
+quick_sort(brr1_3, 0, nMax1);
 high_resolution_clock::time_point t233 = high_resolution_clock::now();
 
 
@@ -267,17 +305,17 @@ out_time[0][5] = tmp_time[0][2];
 ///// 10000
 
 high_resolution_clock::time_point t114 = high_resolution_clock::now();
-sort(brr2_1, brr2_1 + nMax2);
+quick_sort(brr2_1, 0, nMax2);
 high_resolution_clock::time_point t214 = high_resolution_clock::now();
 
 
 high_resolution_clock::time_point t124 = high_resolution_clock::now();
-sort(brr2_2, brr2_2 + nMax2);
+quick_sort(brr2_2, 0, nMax2);
 high_resolution_clock::time_point t224 = high_resolution_clock::now();
 
 
 high_resolution_clock::time_point t134 = high_resolution_clock::now();
-sort(brr2_3, brr2_3 + nMax2);
+quick_sort(brr2_3, 0, nMax2);
 high_resolution_clock::time_point t234 = high_resolution_clock::now();
 
 
@@ -293,17 +331,17 @@ out_time[1][5] = tmp_time[0][2];
 /////20000
 
 high_resolution_clock::time_point t115 = high_resolution_clock::now();
-sort(brr3_1, brr3_1 + nMax3);
+quick_sort(brr3_1, 0, nMax3);
 high_resolution_clock::time_point t215 = high_resolution_clock::now();
 
 
 high_resolution_clock::time_point t125 = high_resolution_clock::now();
-sort(brr3_2, brr3_2 + nMax3);
+quick_sort(brr3_2, 0, nMax3);
 high_resolution_clock::time_point t225 = high_resolution_clock::now();
 
 
 high_resolution_clock::time_point t135 = high_resolution_clock::now();
-sort(brr3_3, brr3_3 + nMax3);
+quick_sort(brr3_3, 0, nMax3);
 high_resolution_clock::time_point t235 = high_resolution_clock::now();
 
 
@@ -352,13 +390,13 @@ out_time[2][5] = tmp_time[0][2];
   float tmp_exq_time[2][3] = {0};
 
   high_resolution_clock::time_point t1152 = high_resolution_clock::now();
-  sort(crr1_2, crr1_2 + tmp_input1);
+  quick_sort(crr1_2, 0, tmp_input1);
   high_resolution_clock::time_point t2152 = high_resolution_clock::now();
   high_resolution_clock::time_point t1252 = high_resolution_clock::now();
-  sort(crr2_2, crr2_2 + tmp_input2);
+  quick_sort(crr2_2, 0, tmp_input2);
   high_resolution_clock::time_point t2252 = high_resolution_clock::now();
   high_resolution_clock::time_point t1352 = high_resolution_clock::now();
-  sort(crr3_2, crr3_2 + tmp_input3);
+  quick_sort(crr3_2, 0, tmp_input3);
   high_resolution_clock::time_point t2352 = high_resolution_clock::now();
 
 
