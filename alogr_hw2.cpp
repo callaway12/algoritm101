@@ -448,13 +448,6 @@ for(int i = 0; i < 2; i++){
 
 
 
-
-
-
-
-
-
-
 ////////////////////
     printf("N = %d      N = %d     N = %d\n", tmp_input1, tmp_input2, tmp_input3 );
     printf("Exchange Sort     %.0f     %.0f     %.0f\n", tmp_exq_time[0][0], tmp_exq_time[0][1],tmp_exq_time[0][2]);
@@ -473,8 +466,6 @@ for(int i = 0; i < 2; i++){
     printf("data 2     %.0f     %.0f     %.0f\n", out_time[0][4], out_time[1][4], out_time[2][4]);
     printf("data 3     %.0f     %.0f     %.0f\n", out_time[0][5], out_time[1][5], out_time[2][5]);
     printf("average    %.0f     %.0f     %.0f\n",  aver[1][0], aver[1][1], aver[1][2]);
-
-
 
 
 
