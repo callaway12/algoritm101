@@ -226,7 +226,7 @@ float out_time [3][6] ={0};
     out_time[0][1] = tmp_time[0][1];
     out_time[0][2] = tmp_time[0][2];
 
-/////위에가 10000
+///// 10000
 
     high_resolution_clock::time_point t111 = high_resolution_clock::now();
     merge_sort(arr2_1, 0, nMax2);
