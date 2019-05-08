@@ -8,6 +8,7 @@ unsigned int count_number=0;
 
 
 %}
+
 %%
 [\t]+ ;
 [A-Za-z][A-Za-z]*[ ] {count_word++;}
@@ -42,4 +43,3 @@ printf("count_mark = %d \n", count_mark);
 printf("count_number = %d \n", count_number);
 
 }
-
