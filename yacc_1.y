@@ -26,7 +26,8 @@ int checkarray =0;
 %token STRUCT UNION ENUM ELLIPSIS USING PRE
 
 %token CASE DEFAULT IF ELSE SWITCH WHILE DO FOR GOTO CONTINUE BREAK RETURN
-
+%nonassoc ELSE
+%nonassoc LOWER_THEN_ELSE
 %start translation_unit
 
 %%
@@ -517,7 +518,7 @@ expression_statement
 	;
 
 selection_statement
-	: IF '(' expression ')' statement { ary[6]++; }
+	: IF '(' expression ')' statement %prec LOWER_THEN_ELSE { ary[6]++; }
 	| IF '(' expression ')' statement ELSE statement { ary[6]++; }
 	| SWITCH '(' expression ')' statement { ary[6]++; }
 	;

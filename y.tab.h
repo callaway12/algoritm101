@@ -66,7 +66,8 @@
      MUL_ASS = 282,
      DIV_ASS = 283,
      ADD_ASS = 284,
-     SUB_ASS = 285
+     SUB_ASS = 285,
+     LOWER_THEN_ELSE = 286
    };
 #endif
 /* Tokens.  */
@@ -98,6 +99,7 @@
 #define DIV_ASS 283
 #define ADD_ASS 284
 #define SUB_ASS 285
+#define LOWER_THEN_ELSE 286
 
 
 
