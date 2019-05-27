@@ -39,67 +39,137 @@
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     LETTER = 258,
-     NUM = 259,
-     VOID = 260,
-     CHAR = 261,
-     SHORT = 262,
-     INT = 263,
-     LONG = 264,
-     FLOAT = 265,
-     DOUBLE = 266,
-     IF = 267,
-     ELSE = 268,
-     THEN = 269,
-     SWITCH = 270,
-     CASE = 271,
-     DEFAULT = 272,
-     WHILE = 273,
-     FOR = 274,
-     RETURN = 275,
-     INC_OP = 276,
-     DEC_OP = 277,
-     EQ_OP = 278,
-     NE_OP = 279,
-     LE_OP = 280,
-     GE_OP = 281,
-     MUL_ASS = 282,
-     DIV_ASS = 283,
-     ADD_ASS = 284,
-     SUB_ASS = 285,
-     LOWER_THEN_ELSE = 286
+     IDENTIFIER = 258,
+     I_CONSTANT = 259,
+     F_CONSTANT = 260,
+     STRING_LITERAL = 261,
+     SIZEOF = 262,
+     ENUMERATION_CONSTANT = 263,
+     PTR_OP = 264,
+     INC_OP = 265,
+     DEC_OP = 266,
+     LEFT_OP = 267,
+     RIGHT_OP = 268,
+     LE_OP = 269,
+     GE_OP = 270,
+     EQ_OP = 271,
+     NE_OP = 272,
+     AND_OP = 273,
+     OR_OP = 274,
+     MUL_ASSIGN = 275,
+     DIV_ASSIGN = 276,
+     MOD_ASSIGN = 277,
+     ADD_ASSIGN = 278,
+     SUB_ASSIGN = 279,
+     LEFT_ASSIGN = 280,
+     RIGHT_ASSIGN = 281,
+     AND_ASSIGN = 282,
+     XOR_ASSIGN = 283,
+     OR_ASSIGN = 284,
+     FUNC_NAME = 285,
+     TYPEDEF = 286,
+     EXTERN = 287,
+     STATIC = 288,
+     AUTO = 289,
+     REGISTER = 290,
+     TYPEDEF_NAME = 291,
+     CHAR = 292,
+     SHORT = 293,
+     INT = 294,
+     LONG = 295,
+     SIGNED = 296,
+     UNSIGNED = 297,
+     FLOAT = 298,
+     DOUBLE = 299,
+     CONST = 300,
+     VOLATILE = 301,
+     VOID = 302,
+     STRUCT = 303,
+     UNION = 304,
+     ENUM = 305,
+     ELLIPSIS = 306,
+     USING = 307,
+     PRE = 308,
+     CASE = 309,
+     DEFAULT = 310,
+     IF = 311,
+     ELSE = 312,
+     SWITCH = 313,
+     WHILE = 314,
+     DO = 315,
+     FOR = 316,
+     GOTO = 317,
+     CONTINUE = 318,
+     BREAK = 319,
+     RETURN = 320,
+     LOWER_THEN_ELSE = 321
    };
 #endif
 /* Tokens.  */
-#define LETTER 258
-#define NUM 259
-#define VOID 260
-#define CHAR 261
-#define SHORT 262
-#define INT 263
-#define LONG 264
-#define FLOAT 265
-#define DOUBLE 266
-#define IF 267
-#define ELSE 268
-#define THEN 269
-#define SWITCH 270
-#define CASE 271
-#define DEFAULT 272
-#define WHILE 273
-#define FOR 274
-#define RETURN 275
-#define INC_OP 276
-#define DEC_OP 277
-#define EQ_OP 278
-#define NE_OP 279
-#define LE_OP 280
-#define GE_OP 281
-#define MUL_ASS 282
-#define DIV_ASS 283
-#define ADD_ASS 284
-#define SUB_ASS 285
-#define LOWER_THEN_ELSE 286
+#define IDENTIFIER 258
+#define I_CONSTANT 259
+#define F_CONSTANT 260
+#define STRING_LITERAL 261
+#define SIZEOF 262
+#define ENUMERATION_CONSTANT 263
+#define PTR_OP 264
+#define INC_OP 265
+#define DEC_OP 266
+#define LEFT_OP 267
+#define RIGHT_OP 268
+#define LE_OP 269
+#define GE_OP 270
+#define EQ_OP 271
+#define NE_OP 272
+#define AND_OP 273
+#define OR_OP 274
+#define MUL_ASSIGN 275
+#define DIV_ASSIGN 276
+#define MOD_ASSIGN 277
+#define ADD_ASSIGN 278
+#define SUB_ASSIGN 279
+#define LEFT_ASSIGN 280
+#define RIGHT_ASSIGN 281
+#define AND_ASSIGN 282
+#define XOR_ASSIGN 283
+#define OR_ASSIGN 284
+#define FUNC_NAME 285
+#define TYPEDEF 286
+#define EXTERN 287
+#define STATIC 288
+#define AUTO 289
+#define REGISTER 290
+#define TYPEDEF_NAME 291
+#define CHAR 292
+#define SHORT 293
+#define INT 294
+#define LONG 295
+#define SIGNED 296
+#define UNSIGNED 297
+#define FLOAT 298
+#define DOUBLE 299
+#define CONST 300
+#define VOLATILE 301
+#define VOID 302
+#define STRUCT 303
+#define UNION 304
+#define ENUM 305
+#define ELLIPSIS 306
+#define USING 307
+#define PRE 308
+#define CASE 309
+#define DEFAULT 310
+#define IF 311
+#define ELSE 312
+#define SWITCH 313
+#define WHILE 314
+#define DO 315
+#define FOR 316
+#define GOTO 317
+#define CONTINUE 318
+#define BREAK 319
+#define RETURN 320
+#define LOWER_THEN_ELSE 321
 
 
 

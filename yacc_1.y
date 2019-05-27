@@ -578,7 +578,7 @@ int main(void)
 	return 0;
 }
 
-void yyerror(const char *str)
+yyerror(const char *str)
 {
 	fprintf(stderr,"error: %s\n",str);
 }
