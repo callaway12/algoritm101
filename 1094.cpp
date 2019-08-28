@@ -12,20 +12,30 @@ int main(void){
   int X = 0;
   int tmp = 64;
   int real = 0;
-  int count = 1;
+  int count = 0;
   cin >> X;
 
-    while(X < real){
-      tmp = tmp/2;
-      real += tmp;
-4      count++;
-      // 3cout << count;
+
+    if(X == 64){
+      cout << 1;
+    }else{
+      while(X != real){
+        tmp = tmp/2;
+        if(tmp+real > X){
+          continue;
+        }
+        real += tmp;
+        count++;
+      }
+      cout << count;
+
     }
 
 
 
 
-cout << count;
+
+
 
 
 
