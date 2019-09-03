@@ -12,6 +12,7 @@ int in_arr[51][51] = {0};
 int ch_arr[51][51] = {0};
 
 class Robot{
+  public:
   int pos_x;
   int pos_y;
   int forward[2] = {0};
@@ -63,6 +64,7 @@ int main(void){
     if(ch_arr[r1.forward[0]][r1.forward[1]] == 0){
       r1.pos_x = r1.forward[0];
       r1.pos_y = r1.forward[1];
+      ch_arr[r1.pos_x][r1.pos_y] = 1;
 
 
 
