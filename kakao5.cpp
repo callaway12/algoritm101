@@ -26,7 +26,7 @@ vector<int> stones;
 
 
     int answer = 0;
-    int tmp_min = 9999999, tmp_check;
+    int tmp_min = 0, tmp_check;
     int min_int;
     int tmp_i;
     for(int j = 0; j < k; j++){
@@ -38,14 +38,15 @@ vector<int> stones;
 
     printf("size : %d \n", stones.size());
     for(int i = 0; i <= stones.size()-k; i++){
-        for(int j = i; j < k; j++){
-            tmp_check += stones[j];
+        for(int j = 0; j < k; j++){
+            tmp_check += stones[j+i];
+            if(tmp_min >= tmp_check){
+                tmp_min = tmp_check;
+            }
         }
-        if(tmp_min >= tmp_check){
-            tmp_min = tmp_check;
-        }
-        cout << tmp_min << endl;
-        cout << tmp_check<< endl;
+
+        cout << "tmp_min : " <<tmp_min << endl;
+        cout << "tmp_check : 3" << tmp_check<< endl;
         if(check_k > tmp_min){
             tmp_i = i;
         }
